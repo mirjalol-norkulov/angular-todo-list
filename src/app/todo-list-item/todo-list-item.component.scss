@@ -1,0 +1,31 @@
+main {
+  display: flex;
+  align-items: center;
+}
+
+section {
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  span {
+    flex: 1;
+  }
+
+  button {
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+
+  &:hover button {
+    opacity: 1;
+  }
+}
+
+input {
+  border: 0;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.87);
+  outline: none;
+}

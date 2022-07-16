@@ -1,0 +1,41 @@
+<main class="todo-list">
+  <h1 class="mat-display-1">todos</h1>
+
+  <mat-form-field appearance="fill">
+    <mat-label>What needs to be done?</mat-label>
+    <input
+      matInput
+      [(ngModel)]="todoText"
+      #ctrl="ngModel"
+      (keyup.enter)="onEnter()"
+    />
+  </mat-form-field>
+
+  <div>
+    <app-todo-list-item
+      *ngFor="let todo of todos"
+      [todo]="todo"
+    ></app-todo-list-item>
+  </div>
+
+  <section class="todo-list__filters">
+    <div>
+      Items left:
+      {{ leftTodosCount }}
+    </div>
+    <mat-button-toggle-group
+      name="fontStyle"
+      aria-label="Font Style"
+      [(ngModel)]="filter"
+    >
+      <mat-button-toggle value="all">All</mat-button-toggle>
+      <mat-button-toggle value="active">Active</mat-button-toggle>
+      <mat-button-toggle value="completed">Completed</mat-button-toggle>
+    </mat-button-toggle-group>
+    <div>
+      <button *ngIf="hasCompleted" mat-flat-button (click)="removeCompleted()">
+        Clear completed
+      </button>
+    </div>
+  </section>
+</main>

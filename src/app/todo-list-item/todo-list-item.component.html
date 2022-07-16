@@ -1,0 +1,25 @@
+<main>
+  <mat-checkbox
+    [checked]="todo.done"
+    (change)="toggleDone(todo.id)"
+  ></mat-checkbox>
+  <section *ngIf="isEditing; else label">
+    <input
+      autofocus
+      [(ngModel)]="todoText"
+      (keyup.enter)="save()"
+      (keyup.esc)="deactivateEdit()"
+      (blur)="deactivateEdit()"
+    />
+  </section>
+  <ng-template #label>
+    <section class="mat-display-body" (dblclick)="activateEdit()">
+      <span>
+        {{ todo.text }}
+      </span>
+      <button mat-icon-button (click)="remove()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </section>
+  </ng-template>
+</main>
